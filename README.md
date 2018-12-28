@@ -1,2 +1,4 @@
-# filterable-article
+# Filterable Article
 WordPress Filterable Article Plugin
+
+
