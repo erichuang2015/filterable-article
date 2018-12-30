@@ -1,0 +1,18 @@
+
+<script>
+  (function () {
+    window.addEventListener('load', function () {
+      new Vue({
+        el: document.getElementById('%id%'),
+        data: {
+          items: %item_model%,
+          filter: %filter_model%,
+        },
+        components: {
+          filterableFilters: window.filterableFilters,
+          filterableItem: window.filterableItem
+        }
+      })
+    })
+  }())
+</script>

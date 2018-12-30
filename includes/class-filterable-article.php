@@ -35,7 +35,7 @@ class Filterable_Article {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Filterable_Article_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Filterable_Article_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +44,7 @@ class Filterable_Article {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
@@ -53,7 +53,7 @@ class Filterable_Article {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -77,8 +77,6 @@ class Filterable_Article {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_public_hooks();
-		$this->define_shortcodes();
-
 	}
 
 	/**
@@ -162,9 +160,10 @@ class Filterable_Article {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+		add_action( 'wp', [ $this, 'define_shortcodes' ] );
 	}
 
-	private    function define_shortcodes(){
+	public function define_shortcodes() {
 		new Filterable_Article_Shortcode( $this->get_plugin_name(), $this->get_version() );
 	}
 
